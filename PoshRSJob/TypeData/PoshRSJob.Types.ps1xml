@@ -28,7 +28,7 @@
                 $False
             }
             Else {
-                If ($State -eq 'Completed' -AND $This.Handle.IsCompleted -AND (-Not $This.Completed)) {
+                If ($State -eq 'Completed' -AND $This.Handle.IsCompleted -AND (-Not $This.Completed) -AND (-Not $This.HasErrors)) {
                     $Output = $This.Innerjob.GetType().GetProperty('OutputBuffer',$Flags)
                     $Results = $Output.GetValue($This.Innerjob)
                     If ($Results.count -gt 0 -AND (-NOT [string]::IsNullOrEmpty($Results))) {
